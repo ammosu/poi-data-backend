@@ -3,8 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from sklearn.neighbors import KDTree
 import pandas as pd
 import numpy as np
-import joblib
-import os
 from geopy.distance import geodesic
 import logging
 
