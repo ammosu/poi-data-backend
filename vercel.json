@@ -1,18 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "excludeFiles": "tests/**\ndocs/**\n*.log\nnode_modules/**\n*.md"
-      }
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "vercel-python",
+      "excludeFiles": "tests/**\ndocs/**\n*.log\nnode_modules/**\n*.md"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/app.py"
+      "dest": "app.py"
     }
   ]
 }
