@@ -13,14 +13,8 @@
     }
   ],
   "functions": {
-    "*.py": {
-      "excludeFiles": [
-        "tests/**",
-        "docs/**",
-        "*.log",
-        "node_modules/**",
-        "*.md"
-      ]
+    "api/*.py": {
+      "excludeFiles": "tests/**"
     }
   }
 }
