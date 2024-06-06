@@ -11,6 +11,17 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ]
+    ],
+    "functions": {
+      "api/**/*.py": {
+        "excludeFiles": [
+          "tests/**",
+          "docs/**",
+          "*.log",
+          "node_modules/**",
+          "*.md"
+        ]
+      }
+    }
   }
   
