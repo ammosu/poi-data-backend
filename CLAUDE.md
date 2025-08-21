@@ -60,11 +60,45 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
+### Docker Operations
+```bash
+# Build Docker image
+docker build -t poi-backend .
+
+# Run container locally
+docker run -d -p 8000:8000 --name poi-backend poi-backend
+
+# Use docker-compose for development
+docker-compose up --build
+
+# View container logs
+docker logs poi-backend
+
+# Stop and remove container
+docker stop poi-backend && docker rm poi-backend
+
+# Check image size
+docker images poi-backend
+```
+
 ### Deployment
 ```bash
-# Deploy to Vercel
-vercel
-# Deploy to production
+# Railway deployment (recommended)
+railway login
+railway init
+railway up
+
+# Google Cloud Run deployment
+gcloud run deploy poi-backend \
+  --source . \
+  --region asia-east1 \
+  --allow-unauthenticated
+
+# Fly.io deployment
+fly launch
+fly deploy
+
+# Vercel (NOT recommended due to 250MB limit)
 vercel --prod
 ```
 
@@ -104,3 +138,12 @@ Key components:
 - **Security**: File size limits, coordinate validation, configurable CORS
 - **Performance**: Optimized "all" type queries, efficient batch processing
 - **Configuration**: Environment variables for all settings (see .env.example)
+- **Docker Support**: Multi-stage build for optimized image size (~780MB)
+- **CSV Format**: Required columns: name, poi_type, lat, lng
+
+## Deployment Considerations
+
+- **Vercel**: Limited by 250MB serverless function size, not suitable for this project
+- **Recommended**: Use Docker-based platforms (Railway, Render, Cloud Run, Fly.io)
+- **Testing**: Always test locally with Docker before deploying
+- **Environment**: Ensure all environment variables are configured in deployment platform
